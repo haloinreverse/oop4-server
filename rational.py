@@ -1,8 +1,11 @@
 class TRational:
     def __init__(self, *args):
-        if isinstance(args[0], int):
+        if isinstance(args[0], int) and len(args) == 1:
             self.__num = args[0]
             self.__denom = 1
+        elif isinstance(args[0], int):
+            self.__num = args[0]
+            self.__denom = args[1]
         elif len(args) == 1:
             if '/' in args[0]:
                 self.__num = int(args[0].replace(' ', '').split('/')[0])
@@ -51,6 +54,9 @@ class TRational:
         new_number = TRational(self.__num * other.__denom, self.__denom * other.__num)
         new_number.__reduce()
         return new_number
+
+    def __neg__(self):
+        return TRational(- self.__num, self.__denom)
 
     ## вспомогательный метод для поиска НОД (используется для сокращения дроби)
     def __nod(self):

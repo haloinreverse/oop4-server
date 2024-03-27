@@ -39,8 +39,8 @@ class Matrix:
         n = len(data)
         if n == 2:
             return data[0][0] * data[1][1] - data[0][1] * data[1][0]
-        s = 0
-        z = 1
+        s = number(0)
+        z = number(1)
         for i in range(n):
             s = s + z * data[0][i] * self.__det_count(self.__get_minor(data, i))
             z = -z
